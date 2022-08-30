@@ -1,0 +1,565 @@
+---
+title: "Classificazione delle università nel mondo"
+author: "Alessia Bressan"
+date: "2022-07-02"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+```
+
+# Introduzione
+
+Ogni anno le diverse università del mondo vengono classificante in base
+a diversi criteri specifici dell'organizzazione che svolge l'analisi Tra
+di loro vengono analizzati i dati riferiti alle classifiche più
+importanti e/o conosciute:
+
+-   QS World University Rankings
+-   Centre for World University Rankings (CWUR)
+-   Academic Ranking of World Universities (ARWU)
+-   Times Higher Education World University Ranking
+
+## QS World University Rankings
+
+Il QS World University Rankings è una classifica mondiale di università
+pubblicata ogni anno dalla società Quacquarelli Symonds Il punteggio
+rilasciato dal QS World University Rankings si basa sui seguenti punti:
+
+1.  **Academic reputation**, che tiene conto della qualità
+    dell'insegnamento e ricerca universitaria
+2.  **Employer Reputation**, che tiene conto della preparazione degli
+    studenti per il mondo del lavoro
+3.  **Faculty/Student Ratio**, rappresenta il numero di docenti per
+    studenti, cioè la facilità con cui le istituzioni forniscono agli
+    studenti l'accesso a docenti e/o tutor
+4.  **Citations per faculty**, indica la misura della qualità di ricerca
+    universitaria, considerando il numero totale di citazioni accademiche
+    nei documenti prodotti dall'università negli ultimi cinque anni
+5.  **International Faculty Ratio**, indica il rapporto tra docenti
+    stranieri e non all'interno dell'università
+6.  **International Student Ratio**, indica il rapporto tra studenti
+    stranieri e non all'interno dell'università
+
+## Centre for World University Rankings (CWUR)
+
+Il Center for World University Rankings (CWUR) è un'organizzazione che
+dal 2012 pubblica una classifica accademica delle università globali
+Nasce come un progetto a Jeddah, in Arabia Saudita, con l'obiettivo di
+classificare le prime 100 università del mondo, dal 2019, la classifica
+si è ampliata per elencare le prime 2000 università mondiali, rendendola
+la più grande classifica accademica delle università globali La
+classificazione si basa sui seguenti punti:
+
+1.  **Education**, tiene conto del successo accademico degli studenti di
+    un'università e misurata dal numero degli studenti che hanno
+    ottenuto prestigiosi riconoscimenti accademici rispetto alle
+    dimensioni dell'università stessa
+2.  **Employability**,tiene conto del successo professionale degli
+    studenti ed è misurata dal loro numero che hanno ricoperto posizioni
+    apicali in importanti aziende rispetto alle dimensioni
+    dell'università
+3.  **Faculty**, indica il numero di docenti che hanno vinto prestigiosi
+    riconoscimenti accademici
+4.  **Research**, indica la ricerca, che è a sua volta divisa in quattro
+    indicatori:
+    -   **Research Output**, indica il numero totale di articoli di
+        ricerca
+    -   **High-Quality Publications**, indica il numero di articoli di
+        ricerca pubblicati sulle maggiori riviste
+    -   **Influence**, indica il numero di articoli di ricerca
+        pubblicati su riviste di maggiore influenza
+    -   **Citations**, indica il numero di articoli di ricerca altamente
+        citati
+
+## Academic Ranking of World Universities (ARWU)
+
+L'Academic Ranking of World Universities (ARWU) nasce nel 2003 dal
+Center for World-Class Universities (CWCU), Graduate School of Education
+(ex Institute of Higher Education) dell'Università Jiao Tong di arwu e
+da allora viene aggiornato su su base annua Dal 2009 la classifica viene
+pubblicata dal arwuRanking Consultancy, classificando oltre 2500
+università, ma solo le prime 1000 vengono pubblicate La classificazione
+si basa sui seguenti punti:
+
+1.  **Quality of Education**, tiene conto degli alumni che hanno
+    conseguito il Premio Nobel e/o la Medaglia Fields
+2.  **Quality of Faculty**, considera due indicatori:
+    -   **Award**, indica lo staff che ha conseguito il Premio Nobel e/o
+        la Medaglia Fields
+    -   **HiCi**, indica il numero delle ricerche maggiormente citate
+3.  **Research Output**, considera due indicatori:
+    -   **N&S**, indica il numero di ricerche pubblicate sulla rivista
+        Nature e Science
+    -   **PUB**, indica tutte le pubblicazioni indicizzate in Science
+        Citation Index-Expanded e Social Science Citation Index
+4.  **Per Capita Performance**, indica lo score ponderato dei precedenti
+    indicatori diviso per il numero dello staff accademico
+
+## Times Higher Education World University Ranking
+
+Il Times Higher Education World University Rankings è una pubblicazione
+annuale delle classifiche universitarie della rivista Times Higher
+Education (THE), dal 2004 la rivista collaborava con Quacquarelli
+Symonds (QS) per pubblicare la classifica congiunta THE-QS World
+University, ma dal 2010 la collaborazione cessa e le classifiche
+successive vengono stilate con l'aiuto di Thomson Reuters, una società
+canadese, mentre dal 2014 la THE collabora con l'Elsevier, una casa
+editrice olandese La classifica presenta ben 13 indicatori divisi in 5
+aree:
+
+1.  **Teaching**, si tratta dell'analisi dell'ambiente di apprendimento
+    in cui sono presenti gli studenti, viene analizzato tramite la
+    reputazione dell'università (**Reputation survey**), il rapporto
+    staff/studenti (**Staff-to-student ratio**), ma anche tra dottorati
+    e laureati (**Doctorate-to-bachelor's ratio**) e il personale
+    accademico (**Doctorates-awarded-to-academic-staff ratio**), infine
+    viene considerato il reddito istituzionale (**Institutional income**)
+2.  **Research**, si tratta dell'analisi della ricerca svolta
+    dall'università analizzandone la reputazione (**reputation
+    survey**), reddito (**research income**) e volume (**research
+    productivity**) della stessa
+3.  **Citations**, si tratta dell'analisi dell'influenza della ricerca,
+    in cui viene esaminato il ruolo dell'università a diffondere nuove
+    conoscenze e idee
+4.  **Industry income**, si tratta dell'analisi del rapporto tra
+    università e industria, analizzando la capacità della prima di
+    innovare e trasferire conoscenze alla seconda
+5.  **International outlook**, si tratta dell'analisi della capacità di
+    un'università di attrarre studenti (**proportion of international
+    students**) e personale internazionale (**proportion of
+    international staff**), nonchè la loro collaborazione internazionale
+    (**international collaboration**)
+
+## Diverse classifiche, diversi indicatori e diversi pesi
+
+Nonostante le classifiche analizzino tutte la qualità dell'insegnamento,
+ricerca, rapporti tra studenti e staff, e in alcuni la valutazione della
+presenza internazionale all'interno di un'università, ogni classifica
+presenta indicatori diversi come i loro pesi nel punteggio finale:
+
+<!-- Caricare le librerie necessarie all'analisi -->
+
+```{r Caricare le librerie, include=FALSE}
+library(readr)
+library(readODS)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(fmsb)
+library(modelr)
+library(corrplot)
+```
+
+-   QS World University Rankings
+
+```{r Indicatori del QS World University Rankings}
+indicatori_qs = data.frame(indicatore = c("Academic Reputation", "Employer Reputation","Faculty/Student Ratio", "Citations per faculty","International Faculty Ratio", "International Student Ratio"), peso = c(40,10,20,20,5,5))
+
+indicatori_qs %>%
+  ggplot(aes(x = "", y = peso, fill = indicatore)) +
+  geom_col(color="white") +
+  geom_text(aes(label = str_c(peso, "%")),
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE) +
+  coord_polar(theta = "y") + 
+  theme_void() +
+  labs(title = "Indicatori del QS World University Rankings", caption = "Data from https://www.topuniversities.com")
+```
+
+
+-   Centre for World University Rankings (CWUR)
+
+```{r Indicatori del Centre for World University Rankings (CWUR)}
+indicatori_cwur = data.frame(indicatore = c("Education", "Employability","Faculty", "Citations","High-Quality Publications", "Influence", "Research Output"), peso = c(25,25,10,10,10,10,10))
+
+indicatori_cwur %>%
+  ggplot(aes(x = "", y = peso, fill = indicatore)) +
+  geom_col(color="white") +
+  geom_text(aes(label = str_c(peso, "%")),
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE) +
+  coord_polar(theta = "y") + 
+  theme_void() +
+  labs(title = "Indicatori del Centre for World University Rankings (CWUR)", caption = "Data from https://cwur.org")
+```
+
+-   Academic Ranking of World Universities (ARWU)
+
+```{r Indicatori del Academic Ranking of World Universities (ARWU)}
+indicatori_arwu = data.frame(indicatore = c("Alumni", "Award","HiCi", "N&S","PUB", "PCP"), peso = c(10,20,20,20,20,10))
+
+indicatori_arwu %>%
+  ggplot(aes(x = "", y = peso, fill = indicatore)) +
+  geom_col(color="white") +
+  geom_text(aes(label = str_c(peso, "%")),
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE) +
+  coord_polar(theta = "y") + 
+  theme_void() +
+  labs(title = "Indicatori dell'Academic Ranking of World Universities (ARWU)", caption = "Data from http://www.shanghairanking.com")
+```
+
+-   Times Higher Education World University Ranking
+
+```{r Indicatori del Times Higher Education World University Ranking}
+indicatori_the = data.frame(indicatore = c("Reputation survey", "Staff-to-student ratio","Doctorate-to-bachelor's ratio", "Doctorates-awarded-to-academic-staff ratio","Institutional income", "Reputation survey", "Research income", "Research productivity", "Citations", "Proportion of international students", "Proportion of international staff", "International collaboration"), peso = c(15, 4.5, 2.25, 6, 2.25, 18, 6, 6, 30, 2.5, 2.5, 2.5))
+
+indicatori_the %>%
+  ggplot(aes(x = "", y = peso, fill = indicatore)) +
+  geom_col(color="white") +
+  geom_text(aes(label = str_c(peso, "%")),
+             position = position_stack(vjust = 0.5),
+             show.legend = FALSE) +
+  coord_polar(theta = "y") + 
+  theme_void() +
+  labs(title = "Indicatori del Times Higher Education World University Ranking", caption = "Data from https://www.timeshighereducation.com")
+
+```
+
+<!-- Caricare i dataset e controllarne gli head -->
+
+```{r Caricare i dataset, include=FALSE}
+qs = read_ods("qs-world-university-rankings-2018-to-2022.ods")
+cwur = read.csv("cwurData.csv")
+arwu = read.csv("shanghaiData.csv")
+the = read.csv("timesData.csv")
+school_and_country_table = read.csv("school_and_country_table.csv")
+
+head(qs)
+head(cwur)
+head(arwu)
+head(the)
+```
+
+<!-- Sistemare i dataset -->
+
+```{r Sistemare i dataset, include=FALSE}
+school_and_country_table <- qs %>%
+  select(university, country) %>%
+  filter(!is.na(country)) %>%
+  rename(school_name = university) %>%
+  union(school_and_country_table) %>%
+  mutate(country = ifelse(country == "United States", "United States of America", country)) %>%
+  mutate(country = ifelse(country == "Ireland", "Republic of Ireland", country)) %>%
+  mutate(country = ifelse(country == "Russia", "Russian Federation", country)) %>%
+  distinct()
+
+qs <- qs %>%
+  mutate(international_students = as.numeric(international_students)) %>% # char to num
+  mutate(international_faculty = as.numeric(international_faculty)) %>% # char to num
+  mutate(overall_score = as.numeric(overall_score)) %>% # char to num
+  rename(total_score = overall_score) %>%
+  mutate(total_score = ifelse(is.na(total_score), 0.4 * academic_reputation + 0.2 * citations_per_faculty + 0.1 * employer_reputation + 0.2 * faculty_student + 0.05 * international_faculty + 0.05 * international_students, total_score)) %>% #NA to total score
+  rename(university_name = university) %>%
+  rename(world_rank = rank) %>%
+  mutate(world_rank = ifelse(str_length(world_rank) > 8, as.numeric(substr(world_rank, 1, 4)), ifelse(str_length(world_rank) > 3, as.numeric(substr(world_rank, 1, 3)), as.numeric(world_rank)))) %>% # char to num
+  select(- country) %>%
+  left_join(school_and_country_table, by = c("university_name" = "school_name")) #join for add country
+
+cwur <- cwur %>%
+  rename(university_name = institution) %>%
+  rename(total_score = score)
+
+arwu <- arwu %>%
+  mutate(world_rank = ifelse(str_length(world_rank) > 3, as.numeric(substr(world_rank, 1, 3)), as.numeric(world_rank))) %>% # char to num
+  mutate(national_rank = ifelse(str_length(national_rank) <= 2, as.numeric(national_rank), ifelse(str_length(national_rank) == 3, as.numeric(substr(world_rank, 1, 1)), as.numeric(substr(world_rank, 1, 3))))) %>% # char to num
+  mutate(total_score = ifelse(is.na(total_score), 0.1 * alumni + 0.2 * award + 0.2 * hici + 0.2 * ns + 0.2 * pub + 0.1 * pcp, total_score)) %>% #NA to total score
+  left_join(school_and_country_table, by = c("university_name" = "school_name")) #join for add country
+
+the <- the %>%
+  mutate(world_rank = ifelse(str_length(world_rank) > 3, as.numeric(substr(world_rank, 1, 3)), as.numeric(world_rank))) %>% # char to num
+  mutate(international = as.numeric(international)) %>% # char to num
+  mutate(income = as.numeric(income)) %>% # char to num
+  mutate(total_score = as.numeric(total_score)) %>% # char to num
+  mutate(num_students = as.numeric(str_remove(num_students, ","))) %>%  # char to num
+  mutate(total_score = ifelse(is.na(total_score), 0.3 * teaching + 0.075 * international + 0.3 * research + 0.3 * citations + 0.025 * income, total_score)) %>%  # NA to total score
+  mutate(international_students = as.numeric(substr(international_students, 1, str_length(international_students)-1))) %>%  # char to num and remove "%"
+  rename(international_students_ratio = international_students) %>%
+  mutate(female_ratio = as.numeric(substr(female_male_ratio, 1, 2)), male_ratio = as.numeric(substr(female_male_ratio, 6, 7)), female_male_ratio = NULL, .before = year) # split the ratio
+```
+
+# Quali sono le migliori università ...
+
+```{r Grafico delle università top 5} 
+
+top5 = function(df,y) {
+  df %>%
+    filter(year == y) %>%
+    slice_min(world_rank, n = 5) %>%
+    ggplot(aes(x = world_rank, y = reorder(university_name, -world_rank))) +
+    geom_bar(stat = "identity", aes(fill=reorder(university_name, -world_rank)), colour="black") +
+    scale_fill_manual(values=c(rep("ivory",2), "#CD7F32", "grey", "gold")) +
+    guides(fill = "none") +
+    labs(x = "World Rank", y = "University", title = str_c("Nel", y, sep = " "))
+}
+```
+
+Analizzando il QS University Ranking si nota che negli ultimi quattro anni, cioè dal 2019 al 2022, le università migliori sono americane o inglesi col primato, per tutti gli anni del MIT
+
+```{r Top 5 università per QS University Ranking}
+gridExtra::grid.arrange(top5(qs, 2019), top5(qs, 2020), top5(qs, 2021), top5(qs, 2022), ncol=2, top = "Top 5 university for QS University Ranking", bottom = "Data from kaggle.com")
+```
+
+Analizzando il CWUR si ha sempre una prevalenza di americani e inglesi, ma col primato dell'università di Harvard tra il 2012 e il 2015
+```{r Top 5 università per CWUR}
+gridExtra::grid.arrange(top5(cwur, 2012), top5(cwur, 2013), top5(cwur, 2014), top5(cwur, 2015), ncol=2, top = "Top 5 university for CWUR", bottom = "Data from kaggle.com")
+```
+Analizzando il ARWU si ha sempre una prevalenza di americani e inglesi, rimane il primato dell'università di Harvard tra il 2012 e il 2015
+```{r Top 5 università per ARWU}
+gridExtra::grid.arrange(top5(arwu, 2012), top5(arwu, 2013), top5(arwu, 2014), top5(arwu, 2015), ncol=2, top = "Top 5 university for ARWU", bottom = "Data from kaggle.com")
+```
+Infine anche l'analisi del THE Ranking da sempre una prevalenza di università americane e inglese, ma tra il 2012 e il 2013 rimane in testa alle classifiche il California Institute of Technology
+```{r Top 5 università per THE Ranking}
+gridExtra::grid.arrange(top5(the, 2012), top5(the, 2013), top5(the, 2014), top5(the, 2015), ncol=2, top = "Top 5 university for THE Ranking", bottom = "Data from kaggle.com")
+```
+
+
+# e i migliori stati?
+
+Si nota analizzando le università che le migliori sono quelle anglo-americane, ma che dire se si raggruppa le università in base allo stato, il loro primato rimane o cambia?
+
+```{r Grafico degli stati top 5}
+top5_c = function(df, y) {
+  df %>%
+    filter(year == y, !is.na(country)) %>%
+    group_by(country) %>%
+    summarise(n = length(year)) %>%
+    slice_max(n, n = 5)
+}
+
+top5_plot_c = function(df, y) {
+  df %>%
+    filter(country %in% top5_c(df,y)$country) %>%
+    ggplot(aes(y = world_rank, x = country, color = country)) +
+    geom_boxplot() +
+    guides(fill = "none") +
+    theme(axis.text.x=element_blank(),
+      axis.ticks.x=element_blank()) +
+    labs(y = "World Rank", x = "Country", title = str_c("Rank in", y, sep = " "))
+}
+
+```
+
+Analizzando il QS University Ranking si nota, tramite la mediana dei valori, che le università inglesi rimangono le migliori mentre quelle tedesche prendono la seconda posizione fino al 2022, dove vengono sostituite da quelle americane
+
+```{r Top 5 stati per QS University Ranking}
+gridExtra::grid.arrange(top5_plot_c(qs, 2019), top5_plot_c(qs, 2020), top5_plot_c(qs, 2021), top5_plot_c(qs, 2022), ncol=2, top = "Top 5 country for QS University Ranking", bottom = "Data from kaggle.com")
+```
+
+Analizzando il CWUR si nota la presenza con una mediana più bassa di università svizzere e israeliane nel 2012 e 2013 nelle prime posizioni, mentre nel 2014 e 2015 in prima posizione ci sono nuovamente le università americane e inglesi
+```{r Top 5 stati per CWUR}
+gridExtra::grid.arrange(top5_plot_c(cwur, 2012), top5_plot_c(cwur, 2013), top5_plot_c(cwur, 2014), top5_plot_c(cwur, 2015), ncol=2, top = "Top 5 country for CWUR", bottom = "Data from kaggle.com")
+```
+Analizzando il ARWU si ha la conferma del primato americano e inglese in tutti gli anni, si noti però che dal 2014 il distacco tra le prime tre è maggiore degli anni precedenti, in cui la mediana è per lo più simile
+```{r Top 5 stati per ARWU}
+gridExtra::grid.arrange(top5_plot_c(arwu, 2012), top5_plot_c(arwu, 2013), top5_plot_c(arwu, 2014), top5_plot_c(arwu, 2015), ncol=2, top = "Top 5 country for ARWU", bottom = "Data from kaggle.com")
+```
+Infine anche l'analisi del THE Ranking da sempre una prevalenza di università americane e inglese, con un andamento per lo più stabile negli anni
+```{r Top 5 stati per THE Ranking}
+gridExtra::grid.arrange(top5_plot_c(the, 2012), top5_plot_c(the, 2013), top5_plot_c(the, 2014), top5_plot_c(the, 2015), ncol=2, top = "Top 5 country for THE Ranking", bottom = "Data from kaggle.com")
+```
+
+Da questa analisi si nota una conferma da parte di alcuni classifiche del primato delle università inglesi e americane, ma anche la presenza di università di spicco in altri paesi, come Israele, Germania e Giappone
+
+## Ma le università con maggiore score sono davvero quelle migliori?
+
+Dai grafici si nota che le università con il migliore score sono americane o inglesi, analizziamo ora la composizione di questo score totale e quali università sono migliori in un determinato campo
+Analizzando i dati dei campi per il QS Ranking si nota che mentre presentano un buon punteggio per la maggioranza degli stessi, si nota una leggera mancanza nel campo internazionale, sia dal punto di vista dello staff che degli studenti, mentre il numero delle citazioni è migliorato nel tempo 
+
+```{r Indicatori del QS Ranking}
+indicatori_qs <- function(y) {
+  top5u = qs %>% 
+    filter(year == y) %>%
+    slice_min(world_rank, n = 5)
+  top5 = top5u %>% select(-world_rank, -university_name, -country, -year)
+  colnames(top5) = c("Total Score", "Academic Reputation", "Citation per Faculty", "Employer Reputation", 
+                      "Faculty Student","International Faculty", "International Students")
+  rownames(top5) = top5u$university_name
+  rmin <- apply(top5,2,min); rmax <- apply(top5,2,max)
+  rmax <- 100
+  rmin <- 0
+  colors_border=c( "blue", "gold", "green", "violet","red" )
+    radarchart(rbind(rmax,rmin,top5),
+               axistype=2 , 
+               pcol=colors_border,
+               #pfcol=rgb(colorValue[1],colorValue[2],colorValue[3], alpha = 0.5),
+               plwd=2 , plty=1,cglcol="grey", cglty=1, axislabcol="grey", cglwd=0.5,vlcex=1, 
+               title= str_c("Indicatori del QS Ranking nel", y, sep =" "))
+  legend(x=1.1, y=0.5, legend = rownames(top5), bty = "n", pch=20 , col=colors_border , text.col = "black", cex=1.2, pt.cex=3)
+}
+indicatori_qs(2019)
+indicatori_qs(2020)
+indicatori_qs(2021)
+indicatori_qs(2022)
+```
+
+Analizzando i campi del CWUR si nota un punteggio minore rispetto al QS Ranking, infatti solo nel 2012 e solo il California Institute of Technology presenta un punteggio per punti di meno di 40, per poi passare a meno di 20
+
+```{r Indicatori del CWUR}
+indicatori_cwur <- function(y) {
+  top5u = cwur %>% 
+    filter(year == y) %>%
+    slice_min(world_rank, n = 5)
+  top5 = top5u %>% select(-world_rank, -university_name, -country, -year, -national_rank, -broad_impact, -patents, -total_score)
+  colnames(top5) = c("Quality of Education", "Alumni Employment", "Quality of Faculty", "Publications", 
+                      "Influence","Citation") #, "Total Score")
+  rownames(top5) = top5u$university_name
+  rmin <- apply(top5,2,min); rmax <- apply(top5,2,max)
+  rmax <- ifelse(y == 2012, 40, 20)
+  rmin <- 0
+  colors_border=c( "blue", "gold", "green", "violet","red" )
+    radarchart(rbind(rmax,rmin,top5),
+               axistype=2 , 
+               pcol=colors_border,
+               #pfcol=rgb(colorValue[1],colorValue[2],colorValue[3], alpha = 0.5),
+               plwd=2 , plty=1,cglcol="grey", cglty=1, axislabcol="grey", cglwd=0.5,vlcex=1, 
+               title= str_c("Indicatori del CWUR", y, sep =" "))
+  legend(x=1.1, y=0.55, legend = rownames(top5), bty = "n", pch=20 , col=colors_border , text.col = "black", cex=1.2, pt.cex=3)
+}
+indicatori_cwur(2012)
+indicatori_cwur(2013)
+indicatori_cwur(2014)
+indicatori_cwur(2015)
+
+```
+
+Invece per l'ARWU il punteggio rimane abbastanza stabile nel tempo, con variazioni minimali, e molto alto
+
+```{r Indicatori del ARWU}
+indicatori_arwu <- function(y) {
+  top5u = arwu %>% 
+    filter(year == y) %>%
+    slice_min(world_rank, n = 5)
+  top5 = top5u %>% select(-world_rank, -university_name, -country, -year, -national_rank)
+  colnames(top5) = c("Total Score", "Alumni", "Award", "HiCi", 
+                      "N&S","PUB", "PCP")
+  rownames(top5) = top5u$university_name
+  rmin <- apply(top5,2,min); rmax <- apply(top5,2,max)
+  rmax <- 100
+  rmin <- 0
+  colors_border=c( "blue", "gold", "green", "violet","red" )
+    radarchart(rbind(rmax,rmin,top5),
+               axistype=2 , 
+               pcol=colors_border,
+               #pfcol=rgb(colorValue[1],colorValue[2],colorValue[3], alpha = 0.5),
+               plwd=2 , plty=1,cglcol="grey", cglty=1, axislabcol="grey", cglwd=0.5,vlcex=1, 
+               title= str_c("Indicatori del ARWU", y, sep =" "))
+  legend(x=1.1, y=0.65, legend = rownames(top5), bty = "n", pch=20 , col=colors_border , text.col = "black", cex=1.2, pt.cex=3)
+}
+indicatori_arwu(2012)
+indicatori_arwu(2013)
+indicatori_arwu(2014)
+indicatori_arwu(2015)
+```
+
+Le variazioni maggiori nelle componenti nel THE Ranking si ha nel punteggio riguardante la prospettiva internazionale, come nel caso del QS Ranking, e l'impatto industriale, mentre le citazioni e la ricerca è abbastanza stabile
+
+```{r Indicatori del THE Ranking}
+indicatori_the <- function(y) {
+  top5u = the %>% 
+    filter(year == y) %>%
+    slice_min(world_rank, n = 5)
+  top5 = top5u %>% select(-world_rank, -university_name, -country, -num_students, -student_staff_ratio, -international_students_ratio, -female_ratio, -male_ratio, -year)
+  colnames(top5) = c("Teaching", "International Outlook", "Research", 
+                      "Citations","Industry Income", "Total Score")
+  rownames(top5) = top5u$university_name
+  rmin <- apply(top5,2,min); rmax <- apply(top5,2,max)
+  rmax <- 100
+  rmin <- 0
+  colors_border=c( "blue", "gold", "green", "violet","red" )
+    radarchart(rbind(rmax,rmin,top5),
+               axistype=2 , 
+               pcol=colors_border,
+               #pfcol=rgb(colorValue[1],colorValue[2],colorValue[3], alpha = 0.5),
+               plwd=2 , plty=1,cglcol="grey", cglty=1, axislabcol="grey", cglwd=0.5,vlcex=1, 
+               title= str_c("Indicatori del THE Ranking nel", y, sep =" "))
+  legend(x=1.1, y=0.5, legend = rownames(top5), bty = "n", pch=20 , col=colors_border , text.col = "black", cex=1.2, pt.cex=3)
+}
+indicatori_the(2012)
+indicatori_the(2013)
+indicatori_the(2014)
+indicatori_the(2015)
+```
+
+Da questa analisi si nota che nonostante alcuni valori un po' bassi, le universita top 5 presentano dei punteggi buoni anche nei singoli indicatori
+
+# Correlazione nel ranking
+
+Dalla metodologia usata e illustrata dai diversi ranking si può vedere la correlazione tra lo score e i vari indicatori, ma anche analizzando i dati forniti si può arrivare alla stessa risposta:
+
+- Matrice di correlazione del QS Ranking
+
+```{r Matrice di correlazione del QS Ranking}
+c <- qs%>%
+  select(-year, -university_name, -country) %>%
+  drop_na() #eliminate na
+colnames(c) <- c("Wolrd Rank", "Total Score", "Academic Reputation", "Citations per faculty", "Employer Reputation","Faculty/Student Ratio", "Inter. Faculty Ratio", "Inter. Student Ratio")
+corrplot(cor(c), method="shade")
+```
+
+- Matrice di correlazione del CWUR
+
+```{r Matrice di correlazione del CWUR}
+c <- cwur%>%
+  select(-year, -university_name, -country, -national_rank, -broad_impact) %>%
+  drop_na() #eliminate na
+colnames(c) <- c("Wolrd Rank","Education", "Employability","Faculty","Publications", "Influence", "Citations", "Research Output", "Total Score")
+corrplot(cor(c), method="shade")
+```
+
+- Matrice di correlazione dell'ARWU
+
+```{r Matrice di correlazione del ARWU}
+c <- arwu%>%
+  select(-year, -university_name, -country, -national_rank) %>%
+  drop_na() #eliminate na
+colnames(c) <- c("Wolrd Rank", "Total Score", "Alumni", "Award","HiCi", "N&S","PUB", "PCP")
+corrplot(cor(c), method="shade")
+```
+
+- Matrice di correlazione del THE Ranking
+
+```{r Matrice di correlazione del THE Ranking}
+c <- the%>%
+  select(-year, -university_name, -country, -male_ratio) %>%
+  drop_na() #eliminate na
+colnames(c) <- c("Wolrd Rank", "Teaching", "Inter. Outlook", "Research", "Citations","Industry Income", "Total Score", "Number of students", "Student/Staff Ratio", "Inter. students Ratio", "Female Ratio")
+corrplot(cor(c), method="shade")
+```
+
+
+Analizzando le matrici di correlazione poste sopra si nota che l'indice di correlazione tra lo score e gli indicatori è pari alla percentuale data dalla metodologia
+L'unica correlazione negativa si ha tra lo score e il world rank, infatti a uno score elevato corrisponde un numero di ranking basso, che però rappresenta un'alta posizione della classifica
+
+# Conclusioni
+
+In conclusione analizzando i dataset si nota una spiccata presenza americana e inglese nella maggioranza dei dataset nonostante l'uso di diversi indicatori, ma dall'analisi si nota anche la presenza di altri paesi, anche inaspettati, come Germania, Israele, Francia e Cina, mentre le università predominanti sono sempre inglesi e americane
+Da notare invece come nel corso di quattro anni in generale le università non presenta un miglioramento significativo nei singoli parametri utilizzati
+Quest'analisi può essere usata come spunto per gli studenti per scegliere un'università che presenta delle caratteristiche specifiche, come un alto numero di citazioni o la loro caricatura internazionale, ma anche per le università stesse che possono usarlo come spunto per migliorare gli indicato in cui sono più carenti, come l'impatto dell'università nell'industria per l'università di Harvard, che risulta il suo parametro peggiore in tutti e quattro gli anni analizzati
+
+# Sitografia
+  - [Kaggle](https://www.kaggle.com/)
+  - [QS Ranking](https://www.topuniversities.com/)
+  - [CWUR](https://cwur.org/)
+  - [ARWU](http://www.shanghairanking.com/)
+  - [THE Ranking](https://www.timeshighereducation.com/)
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
